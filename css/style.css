@@ -1,0 +1,48 @@
+/* Start Global Rukes */
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+/* End Global Rukes */
+
+/* Start header*/
+.navbar {
+  list-style: none;
+  margin: 0;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  padding: 10px;
+}
+
+.navbar li a {
+  color: #eee;
+  text-decoration: none;
+}
+
+.navbar li a.active {
+  color: aquamarine;
+}
+
+/* End header*/
+
+/* Start Section */
+.block {
+  height: 1200px;
+  background-color: #eee;
+  margin-bottom: 60px;
+  padding: 50px 0;
+  text-align: center;
+}
+/* End Section */
