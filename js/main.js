@@ -8,7 +8,7 @@ $(function() {
 
     $("html, body").animate(
       {
-        scrollTop: $("#" + $(this).data("scroll")).offset().top
+        scrollTop: $("#" + $(this).data("scroll")).offset().top + 1
       },
       1000
     );
@@ -24,31 +24,40 @@ $(function() {
       .find("a")
       .removeClass("active");
   });
-  // Synck Navbar Links With Section
 
+  var scrollToTop = $(".scroll-to-top"); // Caching
   $(window).scroll(function() {
+    // Synck Navbar Links With Section
     $(".block").each(function() {
       if ($(window).scrollTop() > $(this).offset().top) {
-        console.log($(this).attr("id"));
-        var blockID = $(this).attr("id");
-        $(".navbar li a[data-scroll=" + blockID + "]")
+        $(".navbar li a[data-scroll=" + $(this).attr("id") + "]")
           .addClass("active")
           .parent()
           .siblings()
           .find("a")
           .removeClass("active");
-
-        /*   $(".navbar li a").each(function() {
-        if ($(this).data("scroll") == blockID) {
-          $(this)
-            .addClass("active")
-            .parent()
-            .siblings()
-            .find("a")
-            .removeClass("active");
-        }
-      }); */
       }
     });
+
+    // Scroll To Top Button
+    if ($(window).scrollTop() > 1000) {
+      if ($(".scroll-to-top").is(":hidden")) {
+        scrollToTop.fadeIn(400);
+      }
+    } else {
+      scrollToTop.fadeOut(400);
+    }
+  });
+
+  //Click To ScrollToTop
+  scrollToTop.click(function(e) {
+    e.preventDefault();
+
+    $("html, body").animate(
+      {
+        scrollTop: 0
+      },
+      1000
+    );
   });
 });
