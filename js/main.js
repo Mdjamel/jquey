@@ -60,4 +60,60 @@ $(function() {
       1000
     );
   });
+
+  $(".show-popup").click(function() {
+    //alert($(this).data("popup"));
+
+    $("." + $(this).data("popup")).fadeIn(100);
+  });
+
+  $(".popup").click(function(e) {
+    $(this).fadeOut();
+  });
+
+  $(".popup .inner").click(function(e) {
+    e.stopPropagation();
+  });
+
+  $(".popup .close").click(function(e) {
+    e.preventDefault();
+    $(this)
+      .parentsUntil(".popup")
+      .parent()
+      .fadeOut();
+  });
+
+  $(document).keydown(function(e) {
+    if (e.keyCode == 27) {
+      $(".popup").fadeOut();
+    }
+  });
+
+  /* Start Button effects */
+  $(".from-left").hover(
+    function() {
+      $(this)
+        .find("span")
+        .eq(0)
+        .animate(
+          {
+            width: "100%"
+          },
+          200
+        );
+    },
+    function() {
+      $(this)
+        .find("span")
+        .eq(0)
+        .animate(
+          {
+            width: "0%"
+          },
+          200
+        );
+      // out
+    }
+  );
+  /* End Button effects */
 });
